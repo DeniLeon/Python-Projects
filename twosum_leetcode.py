@@ -1,12 +1,17 @@
-#la suma de dos indices distintos en una lista deben dar un target, complejidad en O(n2)
+#la suma de dos indices distintos en una lista deben dar un target, complejidad en O(n) mejorada de O(n^2)
 
 def twosum(num,target):
-    for i in range(len(num)):
-        for j in range(i+1,len(num)):
-            if num[i] + num[j] == target:
-                return [i,j]
+    visto = {}
+
+    for i,x in enumerate(num):
+        complemento= target-x
+
+        if complemento in visto:
+            return [visto[complemento], i]
+
+        visto [x]=i
 
 
-num=[1,5,3,4]
-target=9
+num=[1,3,5,6]
+target=8
 print(twosum(num,target))
